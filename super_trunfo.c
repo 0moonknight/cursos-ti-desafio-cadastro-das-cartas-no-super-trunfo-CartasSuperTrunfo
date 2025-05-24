@@ -3,8 +3,8 @@
 int main(){
 
     char estado1, cidade1[50], codigo1[4], estado2, cidade2[50], codigo2[4]; // <- Divisão de variáveis conforme quantidades de cartas.
-    int populcao1, pontos1, populcao2, pontos2;
-    float area1, pib1, area2, pib2;
+    int populacao1, pontos1, populacao2, pontos2;
+    float area1, pibbruto1, area2, pibbruto2, pibb1, pibb2, densidade1, densidade2, pibpc1, pibpc2;
 
 /*
     %d: Imprime um inteiro no formado decimal.
@@ -23,13 +23,17 @@ int main(){
     printf("Digite o nome da cidade da carta: \n");
     scanf(" %[^\n]", cidade1); // <- %[^\n] Para possibilitar que o scanf leia cidades com mais de uma palavra.
     printf("Digite a população da cidade: \n");
-    scanf(" %d", &populcao1);
+    scanf(" %d", &populacao1);
     printf("Digite a área da cidade: \n");
     scanf(" %f", &area1);
     printf("Digite o PIB da cidade: \n");
-    scanf(" %f", &pib1);
+    scanf(" %f", &pibbruto1);
     printf("Digite o número de pontos turisticos da cidade: \n");
     scanf(" %d", &pontos1);
+
+    pibb1 = pibbruto1 / 1000000000;
+    densidade1 = (float) (populacao1 / area1);
+    pibpc1 = pibbruto1 / (float)populacao1;
 
     printf("\nCarta 2: \n Digite o estado da carta: \n");
     scanf(" %c", &estado2);
@@ -39,31 +43,40 @@ int main(){
     printf("Digite o nome da cidade da carta: \n");
     scanf(" %[^\n]", cidade2);
     printf("Digite a população da cidade: \n");
-    scanf(" %d", &populcao2);
+    scanf(" %d", &populacao2);
     printf("Digite a área da cidade: \n");
     scanf(" %f", &area2);
     printf("Digite o PIB da cidade: \n");
-    scanf(" %f", &pib2);
+    scanf(" %f", &pibbruto2);
     printf("Digite o número de pontos turisticos da cidade: \n");
     scanf(" %d", &pontos2);
+
+    pibb2 = pibbruto2 / 1000000000;
+    densidade2 = (float) (populacao2 / area2);
+    pibpc2 = pibbruto2 / (float)populacao2;
 
     printf("\nCarta 1:\n");
     printf("Estado: %c\n", estado1);
     printf("Código: %s\n", codigo1);
     printf("Nome da Cidade: %s\n", cidade1);
-    printf("População: %d\n", populcao1);
+    printf("População: %d\n", populacao1);
     printf("Área: %.2f Km²\n", area1); // <- %.2f para imprimir duas casas decimais após a virgula ou ponto.
-    printf("PIB: %.2f bilhões de reais\n", pib1);
-    printf("Número de Pontos Turísticos: %d\n\n\n", pontos1); // <- Atenção aos espaços de linha para garantir a organização das informações.
+    printf("PIB: %.2f bilhões de reais\n", pibb1);
+    printf("Número de Pontos Turísticos: %d\n", pontos1); // <- Atenção aos espaços de linha para garantir a organização das informações.
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
+    printf("PIB per Capita: %.2f reais\n\n\n", pibpc1);
 
     printf("Carta 2:\n");
     printf("Estado: %c\n", estado2);
     printf("Código: %s\n", codigo2);
     printf("Nome da Cidade: %s\n", cidade2);
-    printf("População: %d\n", populcao2);
+    printf("População: %d\n", populacao2);
     printf("Área: %.2f Km²\n", area2);
-    printf("PIB: %.2f bilhões de reais\n", pib2);
-    printf("Número de Pontos Turísticos: %d\n\n\n", pontos2);
+    printf("PIB: %.2f bilhões de reais\n", pibb2);
+    printf("Número de Pontos Turísticos: %d\n", pontos2);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
+    printf("PIB per Capita: %.2f reais\n\n\n", pibpc2);
+
 
     return 0;
 
